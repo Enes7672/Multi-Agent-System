@@ -1,0 +1,75 @@
+# Multi-Agent System Configuration
+
+OLLAMA_URL: "http://localhost:11434"
+TASK_TIMEOUT: 300
+MAX_RETRIES: 3
+USE_DISTRIBUTED_BUS: false
+REDIS_URL: "redis://localhost:6379"
+GIT_USER_NAME: "multi-agent-system"
+GIT_USER_EMAIL: "agent@example.com"
+
+# Project storage
+project_store_dir: "data/projects"
+
+# Resource limits
+resource_limits:
+  max_memory_mb: 4096
+  max_cpu_percent: 80
+
+# Agent model mapping
+agents:
+  backend-developer:
+    role: "backend-developer"
+    model: "codellama:7b"
+    description: "Backend development - Python modules, classes and services"
+    capabilities:
+      - "python_module"
+      - "class_design"
+      - "error_handling"
+      - "refactoring"
+  
+  database-developer:
+    role: "database-developer"
+    model: "codellama:7b"
+    description: "Database development - SQL schemas, migrations, queries"
+    capabilities:
+      - "sql_schema"
+      - "migration"
+      - "query_optimization"
+  
+  api-developer:
+    role: "api-developer"
+    model: "deepseek-coder:6.7b"
+    description: "API development - REST, FastAPI, authentication"
+    capabilities:
+      - "rest_api"
+      - "fastapi_app"
+      - "authentication"
+      - "api_docs"
+  
+  security-developer:
+    role: "security-developer"
+    model: "deepseek-coder:6.7b"
+    description: "Security - Code review, vulnerability detection"
+    capabilities:
+      - "security_audit"
+      - "vulnerability_scan"
+      - "best_practices"
+  
+  frontend-developer:
+    role: "frontend-developer"
+    model: "starcoder:3b"
+    description: "Frontend development - React, Vue, HTML/CSS"
+    capabilities:
+      - "react_component"
+      - "vue_component"
+      - "html_css"
+  
+  test-developer:
+    role: "test-developer"
+    model: "starcoder:3b"
+    description: "Testing - Unit tests, integration tests"
+    capabilities:
+      - "unit_test"
+      - "integration_test"
+      - "test_generation"

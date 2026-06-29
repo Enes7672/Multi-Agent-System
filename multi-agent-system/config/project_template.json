@@ -1,0 +1,190 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "name": "Multi-Agent Proje",
+  "description": "3 açık kaynaklı AI ile çalışan multi-agent projesi",
+  
+  "project_template": {
+    "phases": {
+      "init": {
+        "name": "Başlangıç",
+        "description": "Proje tanımlama ve planlama",
+        "tasks": [
+          "Gereksinimleri analiz et",
+          "Proje yapısını oluştur",
+          "Görev dağılımını yap"
+        ]
+      },
+      "planning": {
+        "name": "Planlama",
+        "description": "Detaylı görev planlama",
+        "tasks": [
+          "Modülleri tanımla",
+          "API endpoint'lerini belirle",
+          "Frontend bileşenlerini planla",
+          "Test senaryolarını yaz"
+        ]
+      },
+      "development": {
+        "name": "Geliştirme",
+        "description": "Kod geliştirme aşaması",
+        "tasks": [
+          "Modülleri geliştir",
+          "API'leri oluştur",
+          "Frontend bileşenlerini yaz",
+          "Birbirlerinin kodunu incele"
+        ]
+      },
+      "review": {
+        "name": "İnceleme",
+        "description": "Kod incelemesi ve kalite kontrolü",
+        "tasks": [
+          "Cross-agent review",
+          "Kod kalitesini kontrol et",
+          "Güvenlik açığını ara",
+          "Performans analizi yap"
+        ]
+      },
+      "testing": {
+        "name": "Test",
+        "description": "Test ve hata düzeltme",
+        "tasks": [
+          "Unit testleri çalıştır",
+          "Entegrasyon testlerini yap",
+          "Hataları düzelt",
+          "Regression testi yap"
+        ]
+      },
+      "integration": {
+        "name": "Entegrasyon",
+        "description": "Tüm parçaları birleştirme",
+        "tasks": [
+          "Modülleri entegre et",
+          "API'leri bağla",
+          "Frontend'ı entegre et",
+          "Son testleri yap"
+        ]
+      },
+      "completed": {
+        "name": "Tamamlandı",
+        "description": "Proje teslim",
+        "tasks": [
+          "Dokümantasyonu hazırla",
+          "Kodlama standartlarını kontrol et",
+          "Deploy rehberini yaz",
+          "Proje özeti çıkar"
+        ]
+      }
+    },
+    
+    "agent_roles": {
+      "backend-developer": {
+        "name": "Backend Geliştirme Uzmanı",
+        "model": "codellama:7b",
+        "responsibilities": [
+          "Python backend modülleri yazmak",
+          "Sınıf ve fonksiyon tasarımları",
+          "Kod optimizasyonu",
+          "Hata yönetimi"
+        ],
+        "output_types": ["python", "typescript", "documentation"]
+      },
+      "database-developer": {
+        "name": "Veritabanı Geliştirme Uzmanı",
+        "model": "codellama:7b",
+        "responsibilities": [
+          "Veritabanı şemaları tasarlamak",
+          "SQL sorguları yazmak",
+          "Migration dosyaları oluşturmak",
+          "ORM modülleri geliştirmek"
+        ],
+        "output_types": ["sql", "python", "yaml"]
+      },
+      "api-developer": {
+        "name": "API Geliştirme Uzmanı",
+        "model": "deepseek-coder:6.7b",
+        "responsibilities": [
+          "REST API endpoint'leri oluşturmak",
+          "FastAPI/Flask uygulamaları geliştirmek",
+          "Request/Response modelleri tasarlamak",
+          "API dokümantasyonu hazırlamak"
+        ],
+        "output_types": ["python", "yaml", "markdown"]
+      },
+      "security-developer": {
+        "name": "Güvenlik Geliştirme Uzmanı",
+        "model": "deepseek-coder:6.7b",
+        "responsibilities": [
+          "Güvenlik denetimi yapmak",
+          "Şifreleme modülleri geliştirmek",
+          "Zafiyet taraması yapmak",
+          "Güvenlik yapılandırmaları oluşturmak"
+        ],
+        "output_types": ["python", "yaml", "markdown"]
+      },
+      "frontend-developer": {
+        "name": "Frontend Geliştirme Uzmanı",
+        "model": "starcoder:3b",
+        "responsibilities": [
+          "React/Vue bileşenleri yazmak",
+          "TypeScript/JavaScript kodları geliştirmek",
+          "CSS/Tailwind stilleri oluşturmak",
+          "UI/UX iyileştirmeleri yapmak"
+        ],
+        "output_types": ["typescript", "javascript", "css"]
+      },
+      "test-developer": {
+        "name": "Test Geliştirme Uzmanı",
+        "model": "starcoder:3b",
+        "responsibilities": [
+          "Unit testleri yazmak",
+          "Entegrasyon testleri oluşturmak",
+          "E2E test senaryoları planlamak",
+          "Test otomasyonları kurmak"
+        ],
+        "output_types": ["typescript", "javascript", "python"]
+      }
+    },
+    
+    "coordination_rules": {
+      "task_assignment": {
+        "method": "priority_based",
+        "max_concurrent_tasks": 3,
+        "timeout_seconds": 300
+      },
+      "review_process": {
+        "cross_review": true,
+        "min_reviewers": 2,
+        "approval_threshold": 0.8
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "escalation_threshold": 5,
+        "auto_restart": true
+      }
+    },
+    
+    "resource_limits": {
+      "max_ram_usage_percent": 80,
+      "max_cpu_usage_percent": 70,
+      "memory_warning_threshold": 70,
+      "memory_critical_threshold": 90,
+      "auto_pause_on_critical": true
+    }
+  },
+  
+  "file_structure": {
+    "source": "src/",
+    "tests": "tests/",
+    "docs": "docs/",
+    "config": "config/",
+    "scripts": "scripts/"
+  },
+  
+  "quality_standards": {
+    "code_style": "PEP 8",
+    "documentation": "Google Style",
+    "test_coverage_minimum": 80,
+    "max_function_length": 50,
+    "max_file_length": 500
+  }
+}
